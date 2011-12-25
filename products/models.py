@@ -42,6 +42,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=80)
     category = models.ForeignKey(Category)
+    direct_link = models.URLField()
     short_description = tinymce_models.HTMLField()
     description = tinymce_models.HTMLField()
     body = tinymce_models.HTMLField()
