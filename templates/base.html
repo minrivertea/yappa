@@ -1,0 +1,107 @@
+{% load django_static nav_selected thumbnail %}
+
+{% block doctype %}<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% endblock %}
+
+<head>
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta content="en-gb" http-equiv="Content-Language" />
+	<meta content="{% block metadescription %}{% endblock %}" name="description" />
+
+	
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="generator" content="Django - http://www.djangoproject.com" />
+	<meta name="DC.format" content="text/html" />
+	<meta name="DC.type" content="Django Site" />
+	<meta name="robots" content="ALL" />
+	<title>{% block pagetitle %}{% endblock %} | {{ sitename }}</title>
+	<link rel="shortcut icon" href="{% staticfile '/images/favicon.ico' %}" type="image/x-icon">
+
+
+		<script type="text/javascript" src="{% staticfile '/js/jquery-1.6.min.js' %}"></script>
+	    {% if ga_is_on %}
+	    <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+	    {% else %}
+	    <script src="{% staticfile '/js/jquery.tools.min.js' %}"></script>
+	    {% endif %}
+	    
+	
+	{% block extra-head %}{% endblock %}
+
+	    <link rel="stylesheet" href="{% staticfile '/css/styles2.css' %}" />
+
+	    <!--[if lte IE 6]>
+		<link rel="stylesheet" media="screen" type="text/css" href="{% staticfile '/css/ie6.css' %}" />
+		<![endif]-->
+
+
+	{% block extracss %}{% endblock %}
+	
+	{% if ga_is_on %}
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'XXXXXXXACCOUNT HEREXXXXXX']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	{% endif %}
+
+</head>
+
+
+
+<body>
+    	
+<div id="header">
+   <div class="super">
+	   	<div id="logo">
+	   		<a href="/">
+	   		  {% thumbnail shopsettings.logo "200" crop="center" as im %}
+	   			<img src="{{ im.url }}"/>
+	   		  {% endthumbnail %}	
+	   		</a>
+	   	</div>
+	   	
+	   	<ul id="nav">
+			<li><a class="{% nav_selected request '^/$' %}" href="/">Home</a></li>
+			<li><a class="{% nav_selected request '^/games/$' %}" href="{% url games %}">Games</a></li>
+			<li><a class="{% nav_selected request '^/about/$' %}" href="/about/">About Us</a></li>
+			<li><a class="{% nav_selected request '^/contact/$' %}" href="/contact/">Contact</a></li>
+		</ul>
+		
+	</div>
+</div><!-- end header -->
+
+<div id="center">
+	<div class="super">
+		{% block content %}{% endblock %}
+	</div>
+</div>
+
+<div id="footer">
+	<div class="super">
+		<ul>
+			<li><a href="">Terms and Conditions</a></li>
+			<li><a href="">Privacy</a></li>
+			<li><a href="">Jobs</a></li>
+			<li><a href="">Contact Us</a></li>
+		</ul>
+	</div>		
+</div>
+
+{% block extrajs %}{% endblock %}
+</body>
+
+</html>

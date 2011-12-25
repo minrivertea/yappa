@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% load django_static %}
+
+{% block extracss %}
+<style type="text/css">
+#feature {
+  margin: 0;
+  float: left:
+  width: 100%;
+  height: 400px;
+  background-color: #fff;
+  box-shadow: 0 1px 5px #666;
+  border-radius: 10px;
+  padding: 30px;
+  border: 8px solid #f1f1f1;	
+}
+
+#feature #text {
+  float: right;
+  width: 320px;	
+}
+
+#feature h1 {
+  float: left;	
+  margin: 0;
+}
+
+#feature p#desc {
+  font-size: 16px; 
+  float: left;	
+}
+
+#feature a.button {
+  margin: 0;
+  float: left;
+  font-size: 18px;
+  padding: 16px 22px 14px;	
+}
+
+#promo {
+  padding: 10px 40px;	
+}
+
+#promo p {
+  font-size: 18px;
+  font-weight: bold;	
+  float: left;
+  width: 500px;
+}
+
+#promo ul {
+  float: right;
+  width: 250px;	
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 0 1px 1px #000;
+  color: #fff;
+}
+
+#games {
+  float: left;
+  width: 100%;
+  margin: 30px 0 0 0;	
+}
+
+#games .game {
+  background-colr: #fff;
+  padding: 10px 5px;
+  float: left;
+  margin: 0 3px 3px 0;	
+  border: 4px solid transparent;
+}
+
+#games .game:hover {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 4px solid #e1e1e1;
+  cursor: pointer;	
+}
+
+#games .game h3 {
+  margin: 0 0 0 35px;
+  color: #000;	
+  text-shadow: 0 1px 1px #fff;
+}
+</style>
+{% endblock %}
+
+
+{% block extrajs %}
+<script type="text/javascript">
+</script>
+{% endblock %}
+
+
+
+{% block content %}
+<div id="feature">
+  <div id="text">
+  	{{ shopsettings.homepage_promo_text|safe }}
+	<a class="button" href="">Browse our games now &raquo;</a>
+  </div>
+</div>
+
+<div id="promo">
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+	<ul>
+		<li>Great prices</li>
+		<li>Engaging gameplay</li>
+		<li>Free forever</li>	
+	</ul>
+</div>
+
+<div id="games">
+	<div class="game">
+		<img src="{% staticfile '/images/game.png' %}"/>
+		<h3>Adventure Game</h3>
+	</div>
+	<div class="game">
+		<img src="{% staticfile '/images/game2.png' %}"/>
+		<h3>Fun friendly game</h3>
+	</div>
+	<div class="game">
+		<img src="{% staticfile '/images/game3.png' %}"/>
+	</div>
+</div>
+
+
+
+{% endblock %}

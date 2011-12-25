@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% load django_static thumbnail  %}
+
+{% block pagetitle %}Home{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+#feature {
+    border-radius: 10px 10px 10px 10px;
+    height: auto;
+    margin: 0 0 40px 0;
+    padding: 30px 30px 0;
+    float: left;
+    width: 900px;
+    text-align: right;
+}
+
+#feature #image {
+  float: left;
+  width: 550px;	
+  margin: 15px 0 0;
+}
+
+#feature #text {
+  float: right;
+  width: 320px;	
+}
+
+#feature h1 {
+  float: left;	
+  margin: 0;
+}
+
+#feature p#desc {
+  font-size: 16px; 
+  float: left;	
+}
+
+#feature a.button {
+  margin: 0;
+  float: right;
+  font-size: 18px;
+  padding: 16px 22px 14px;
+  color: #fff;	
+}
+
+#promo {
+  padding: 10px 40px;	
+  float: left;
+  width: 900px;
+}
+
+#promo p {
+  font-size: 18px;
+  font-weight: bold;	
+  float: left;
+  width: 500px;
+  font-weight: 100;
+}
+
+#promo ul {
+  float: right;
+  width: 250px;	
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 0 1px 1px #999;
+  color: #000;
+}
+
+#games {
+  padding: 10px 40px;
+  float: left;
+  width: 900px;
+  margin: 30px 0 0 0;	
+}
+
+#games .game {
+  padding: 15px;
+  float: left;
+  margin: 0 10px 3px 0;	
+  border: 1px solid transparent;
+  width: 250px;
+  height: 300px;
+}
+
+#games .game:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  box-shadow: 0 1px 3px #999;
+  cursor: pointer;	
+}
+
+#games .game h3 {
+  margin: 10px 0 5px 0px;
+  color: #000;	
+  text-shadow: 0 1px 1px #fff;
+}
+
+.game .text p {
+  font-size: 13px;
+  margin: 0 0 5px 0;		
+}
+</style>
+{% endblock %}
+
+
+{% block extrajs %}
+<script type="text/javascript">
+</script>
+{% endblock %}
+
+
+
+{% block content %}
+<div id="feature">
+  <div id="image">
+  	{% thumbnail shopsettings.homepage_feature_image "550" crop="" as im %}
+  		<img src="{{im.url }}"/>
+  	{% endthumbnail %}
+  </div>
+  <div id="text">
+	{{ shopsettings.homepage_promo_text|safe }}
+	<a class="button" href="{% url games %}">Browse our games now &raquo;</a>
+  </div>
+</div>
+
+<div id="promo">
+	<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed</strong> do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+	<ul>
+		<li>Great prices</li>
+		<li>Engaging gameplay</li>
+		<li>Free forever</li>	
+	</ul>
+</div>
+
+<div id="games">
+	{% for g in featured_games %}
+	<div class="game">
+		{% thumbnail g.image "250" crop="" as im %}
+			<img src="{{ im.url }}"/>
+		{% endthumbnail %}
+		<h3>{{ g.name }}</h3>
+		<div class="text">{{ g.short_description|safe }}
+		<p><a href=""><strong>Find out more &raquo;</strong></a></p>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+
+
+{% endblock %}

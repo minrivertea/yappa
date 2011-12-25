@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% load django_static thumbnail %}
+
+{% block pagetitle %}Our games{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+#list {
+  float: left;
+  width: 900px;
+  margin: 50px 0 0 0;	
+}
+
+#list .cat {
+  width: 100%;
+  float: left;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px 25px;
+  margin: 0 0 20px 0;
+  box-shadow: 0 1px 3px #999;	
+}
+
+.cat .image {
+  float: left;
+  font-size: 38px;
+  font-weight: bold;
+  width: 200px;
+  margin: 0 30px 0 0;
+  height: 100%;
+  padding: 0 30px 0 0;
+  border-right: 1px solid #e1e1e1;	
+}
+
+.games .game {
+  float: left;
+  width: 180px;	
+  margin-right: 30px;
+}
+
+.game h4 {
+  font-size: 22px;
+  margin: 15px 0 0;
+  color: #D95600;	
+}
+
+.game p {
+  margin: 0;	
+}
+</style>
+{% endblock %}
+
+
+{% block extrajs %}
+<script type="text/javascript">
+</script>
+{% endblock %}
+
+
+
+{% block content %}
+{{ shopsettings.games_page_intro_text|safe }}
+
+<div id="list">
+{% for c in categories %}
+	<div class="cat">
+		
+		<div class="image">
+			{% if c.image %}
+			{% thumbnail c.image "200" crop="" as im %}
+				<img src="{{ im.url }}"/>
+			{% endthumbnail %}	
+			{% else %}
+				{{ c.name }}
+			{% endif %}
+			
+		</div>
+		<div class="games">
+			{% for g in c.get_games %}
+				<div class="game">
+				{% thumbnail g.image "180x180" crop="" as im %}
+					<img src="{{ im.url }}"/>
+				{% endthumbnail %}
+				<h4>{{ g.name }}</h4>
+				{{ g.short_description|safe }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endfor %}
+</div>
+
+{% endblock %}
