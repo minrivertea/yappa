@@ -8,9 +8,6 @@ urlpatterns = patterns('',
     url(r'^games/$', views.games, name="games"),
     #url(r'^add/$', views.add_question, name="add_question"),
     #url(r'^answer/([\w+])/$', views.answer_vote, name="answer_vote"),
-    #url(r'^(?P<questionslug>[\w-]+)/add-answer/$', views.add_answer, name="add_answer"),
-    #url(r'^(?P<questionslug>[\w-]+)/$', views.question, name="question"),
-    
-
+    url(r'^games/(?P<slug>[\w-]+)/$', views.game, name="game"),
 )
 

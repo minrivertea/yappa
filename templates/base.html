@@ -64,7 +64,7 @@
 	   	
 	   	<ul id="nav">
 			<li><a class="{% nav_selected request '^/$' %}" href="/">Home</a></li>
-			<li><a class="{% nav_selected request '^/games/$' %}" href="{% url games %}">Games</a></li>
+			<li><a class="{% if '/games/' in request.path %}selected {% endif %}" href="{% url games %}">Games</a></li>
 			<li><a class="{% nav_selected request '^/about/$' %}" href="/about/">About Us</a></li>
 			<li><a class="{% nav_selected request '^/contact/$' %}" href="/contact/">Contact</a></li>
 		</ul>

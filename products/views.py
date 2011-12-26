@@ -23,3 +23,9 @@ def home(request):
 def games(request):
     categories = Category.objects.all().order_by('-order')
     return render(request, 'products/games.html' , locals())
+    
+
+
+def game(request, slug):
+    game = get_object_or_404(Product, slug=slug)
+    return render(request, 'products/game.html' , locals())

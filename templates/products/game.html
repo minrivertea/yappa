@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load django_static thumbnail %}
+
+{% block pagetitle %}Our games{% endblock %}
+
+{% block extracss %}
+<style type="text/css">
+#introtext {
+  margin: 30px 0 10px 0;	
+}
+
+#introtext p {
+  font-size: 22px;
+  font-weight: 100;
+  padding: 0;
+  margin: 0;	
+  color: #D95600;
+}
+
+#promo-image {
+  width: 500px;
+  float: right;
+  margin: 0 0 30px 30px;	
+}
+</style>
+{% endblock %}
+
+
+{% block extrajs %}
+<script type="text/javascript">
+</script>
+{% endblock %}
+
+
+
+{% block content %}
+<h1>{{ game.name }}</h1>
+
+<div id="promo-image">
+	{% thumbnail game.big_promo_image "500" crop="" as im %}
+		<img src="{{ im.url }}"/>
+	{% endthumbnail %}
+</div>
+
+
+<div id="introtext">{{ game.description|safe }}</div>
+
+{{ game.body|safe }}
+
+{% endblock %}

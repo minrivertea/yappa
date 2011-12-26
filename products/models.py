@@ -25,11 +25,16 @@ class ShopSettings(models.Model):
     
 
 class Category(models.Model):
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=80)
-    order = models.PositiveIntegerField(blank=True, null=True)
-    image = models.ImageField(upload_to='images/categories', blank=True, null=True)
-    is_active = models.BooleanField(default=True)
+    name = models.CharField(max_length=200, 
+        help_text="The full name of the game")
+    slug = models.SlugField(max_length=80,
+        help_text="No special characters, spaces etc. only letters, numbers and '-' dashes")
+    order = models.PositiveIntegerField(blank=True, null=True, 
+        help_text="The order of the category ont the listing page. 1 is top, 10 is bottom. Optional")
+    image = models.ImageField(upload_to='images/categories', blank=True, null=True, 
+        help_text="An image to represent the category. Should be 200px wide.")
+    is_active = models.BooleanField(default=True, 
+        help_text="If unticked, it won't appear on the site.")
     
     def __unicode__(self):
         return self.name
@@ -39,15 +44,23 @@ class Category(models.Model):
         return games
 
 class Product(models.Model):
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=80)
-    category = models.ForeignKey(Category)
-    direct_link = models.URLField()
-    short_description = tinymce_models.HTMLField()
-    description = tinymce_models.HTMLField()
-    body = tinymce_models.HTMLField()
-    image = models.ImageField(upload_to='images/products')
-    is_active = models.BooleanField(default=True)
+    name = models.CharField(max_length=200, 
+        help_text="The full name of this game")
+    slug = models.SlugField(max_length=80, 
+        help_text="No special characters, spaces etc. only letters, numbers and '-' dashes")
+    category = models.ForeignKey(Category, 
+        help_text="Which category does it belong to?")
+    direct_link = models.URLField(blank=True, null=True, 
+        help_text="If the game is directly playable online, link to it. Optional.")
+    short_description = tinymce_models.HTMLField(help_text="Very short descr. only 70 characters.")
+    description = tinymce_models.HTMLField(help_text="Slightly longer description, maybe 200 characters.")
+    body = tinymce_models.HTMLField(help_text="Full description, unlimited.")
+    image = models.ImageField(upload_to='images/products', 
+        help_text="The small 'thumbnail' image for the game. ")
+    big_promo_image = models.ImageField(upload_to="images/products", blank=True, null=True,
+        help_text="A large image which appears on the game description page. 400px wide.")
+    is_active = models.BooleanField(default=True, 
+        help_text="If unticked, the game won't appear on the site.")
     
     def __unicode__(self):
         return self.name
