@@ -56,9 +56,7 @@
    <div class="super">
 	   	<div id="logo">
 	   		<a href="/">
-	   		  {% thumbnail shopsettings.logo "200" crop="center" as im %}
-	   			<img src="{{ im.url }}"/>
-	   		  {% endthumbnail %}	
+	   		  <img src="{% staticfile '/images/logo.png' %}"/>	
 	   		</a>
 	   	</div>
 	   	

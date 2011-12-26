@@ -40,24 +40,31 @@
 #feature a.button {
   margin: 0;
   float: right;
-  font-size: 18px;
-  padding: 16px 22px 14px;
-  color: #000;	
-background: rgb(232,135,32); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(232,135,32,1) 0%, rgba(201,89,4,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232,135,32,1)), color-stop(100%,rgba(201,89,4,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(232,135,32,1) 0%,rgba(201,89,4,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(232,135,32,1) 0%,rgba(201,89,4,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(232,135,32,1) 0%,rgba(201,89,4,1) 100%); /* IE10+ */
-background: linear-gradient(top,  rgba(232,135,32,1) 0%,rgba(201,89,4,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e88720', endColorstr='#c95904',GradientType=0 ); /* IE6-9 */
+  font-size: 24px;
+  padding: 16px 35px 14px;
+  color: #fff;	
+  border-radius: 5px;
+  text-shadow: 0 1px 1px #000;
 
 }
 
 #promo {
-  padding: 10px 40px;	
+  padding: 30px 40px;	
   float: left;
   width: 900px;
+}
+
+.icon {
+  float: left;
+  margin-right: 30px;	
+}
+
+.icon h3 {
+  margin: 8px 0 0 0px;
+  width: 100%;
+  font-size: 14px;
+  color: #104B7F;
+  text-align: center;	
 }
 
 #promo p {
@@ -66,6 +73,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e88720', end
   float: right;
   width: 500px;
   font-weight: 100;
+  margin: 0;
 }
 
 #promo ul {
@@ -96,6 +104,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e88720', end
   border: 1px solid #fff;
   box-shadow: 0 1px 3px #999;
   background-color: #EFF9FC;
+  position: relative;
 }
 
 #games .game:last-child {
@@ -104,7 +113,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e88720', end
 
 #games .game:hover {
   cursor: pointer;	
-  
+  border: 1px solid #2691BE;
 }
 
 #games .game h3 {
@@ -116,6 +125,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e88720', end
 .game .text p {
   font-size: 13px;
   margin: 0 0 5px 0;		
+}
+
+.game a.button {
+  position: absolute;
+  bottom: 15px;
+  padding: 6px 30px 4px;
 }
 </style>
 {% endblock %}
@@ -137,11 +152,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e88720', end
   </div>
   <div id="text">
 	{{ shopsettings.homepage_promo_text|safe }}
-	<a class="button" href="{% url games %}">Browse our games now &raquo;</a>
+	<a class="button" href="{% url games %}">Browse our games &raquo;</a>
   </div>
 </div>
 
 <div id="promo">
+	<div class="icon">
+		<img src="{% staticfile '/images/develop.png' %}"/>
+		<h3>Develop</h3>
+	</div>
+	<div class="icon">
+		<img src="{% staticfile '/images/publish.png' %}"/>
+		<h3>Publish</h3>
+	</div>
+	<div class="icon">
+		<img src="{% staticfile '/images/channel.png' %}"/>
+		<h3>Channel</h3>
+	</div>
+
 	{{ shopsettings.homepage_intro_text|safe }}
 </div>
 
@@ -153,7 +181,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e88720', end
 		{% endthumbnail %}
 		<h3>{{ g.name }}</h3>
 		<div class="text">{{ g.short_description|safe }}
-		<p><a href=""><strong>Find out more &raquo;</strong></a></p>
+		<p>
+		{% if g.direct_link %}
+			<a class="button" href="{{ g.direct_link }}">Play now!</a>
+		{% else %}
+			<a class="" href="{% url game g.slug %}"><strong>Find out more</strong></a>
+		{% endif %}	
+		</p>
 		</div>
 	</div>
 	{% endfor %}

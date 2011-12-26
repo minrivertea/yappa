@@ -6,6 +6,11 @@
 
 {% block extracss %}
 <style type="text/css">
+h1 {
+  font-size: 75px;
+  margin: 20px 0 0;	
+}
+
 #introtext {
   margin: 30px 0 10px 0;	
 }
@@ -37,12 +42,13 @@
 {% block content %}
 <h1>{{ game.name }}</h1>
 
-<div id="promo-image">
-	{% thumbnail game.big_promo_image "500" crop="" as im %}
-		<img src="{{ im.url }}"/>
-	{% endthumbnail %}
-</div>
-
+{% if game.big_promo_image %}
+	<div id="promo-image">
+		{% thumbnail game.big_promo_image "500" crop="" as im %}
+			<img src="{{ im.url }}"/>
+		{% endthumbnail %}
+	</div>
+{% endif %}
 
 <div id="introtext">{{ game.description|safe }}</div>
 
