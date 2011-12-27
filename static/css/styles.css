@@ -134,11 +134,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', end
 
 #header #logo {
   float: left;
-  margin-left: 50px;	
+  margin: 48px 0 0 30px;	
 }
 
 #header ul#nav {
-  margin: 90px 30px 0 0;
+  margin: 80px 30px 0 0;
   padding: 0;
   list-style-type: none;
   float: right;	
