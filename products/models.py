@@ -43,7 +43,7 @@ class Category(models.Model):
         games = []
         for p in Product.objects.filter(is_active=True):
             if self in p.categories.all():
-                games.append(self)
+                games.append(p)
 
         return games
 
