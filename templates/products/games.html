@@ -52,10 +52,14 @@
 
 .games .game {
   float: left;
-  width: 180px;	
+  width: 195px;	
   height: 280px;
-  margin: 0 30px 20px 0;
+  margin: 0 20px 20px 0;
   position: relative;
+}
+
+.games .game.last {
+  margin-right: 0;	
 }
 
 .game p {
@@ -70,17 +74,41 @@
   width: 140px;
 }
 
-.game .link {
+.game .more {
   font-weight: bold;
   font-size: 14px;
   position: relative;
   top: 10px;	
 }
 
+span.link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: block;
+  float: left;	
+}
+
+span.link:hover {
+  cursor: pointer;	
+}
+
 .game h4 {
   font-size: 22px;
   margin: 15px 0 0;
   color: #D95600;	
+}
+
+.game:hover h4, .game:hover .more  {
+    color: #2691BE;
+    text-decoration: underline;
+}
+
+.game:hover img {
+  opacity: 0.8;	
 }
 
 .game p {
@@ -116,18 +144,13 @@
 		</div>
 		<div class="games">
 			{% for g in c.get_games %}
-				<div class="game">
-				{% thumbnail g.image "180x180" crop="" as im %}
-					<img src="{{ im.url }}"/>
-				{% endthumbnail %}
-				<h4>{{ g.name }}</h4>
-				{{ g.short_description|safe }}
-					{% if g.direct_link %}
-						<a class="button" href="{{ g.direct_link }}">Play now!</a>
-					{% else %}
-						<a class="link" href="{% url game g.slug %}">Find out more &raquo;</a>
-					{% endif %}
-					
+				<div class="game {% cycle 'last' '' '' %}">
+					<a href="{% url game g.slug %}"><span class="link"></span></a>
+					{% thumbnail g.image "195x180" crop="" as im %}
+						<img src="{{ im.url }}"/>
+					{% endthumbnail %}
+					<h4>{{ g.name }}</h4>
+					{{ g.short_description|safe }}
 				</div>
 			{% endfor %}
 		</div>
