@@ -40,7 +40,11 @@ class Category(models.Model):
         return self.name
     
     def get_games(self):
-        games = Product.objects.filter(category=self)
+        games = []
+        for p in Product.objects.filter(is_active=True):
+            if self in p.categories.all():
+                games.append(self)
+
         return games
 
 class Product(models.Model):
@@ -48,11 +52,11 @@ class Product(models.Model):
         help_text="The full name of this game")
     slug = models.SlugField(max_length=80, 
         help_text="No special characters, spaces etc. only letters, numbers and '-' dashes")
-    category = models.ForeignKey(Category, 
-        help_text="Which category does it belong to?")
+    categories = models.ManyToManyField(Category, 
+        help_text="Which categories does this game belong to?")
     direct_link = models.URLField(blank=True, null=True, 
-        help_text="If the game is directly playable online, link to it. Optional.")
-    short_description = tinymce_models.HTMLField(help_text="Very short descr. only 70 characters.")
+        help_text="A URL link to the external game website. Optional, and remember the http:// at the beginning.")
+    short_description = tinymce_models.HTMLField(help_text="Very short description, only 70 characters.")
     description = tinymce_models.HTMLField(help_text="Slightly longer description, maybe 200 characters.")
     body = tinymce_models.HTMLField(help_text="Full description, unlimited.")
     image = models.ImageField(upload_to='images/products', 
