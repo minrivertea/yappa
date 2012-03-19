@@ -100,7 +100,7 @@
   float: left;
   margin: 0 20px 3px 0;	
   width: 250px;
-  height: 340px;
+  height: 310px;
   border: 1px solid #fff;
   box-shadow: 0 1px 3px #999;
   background-color: #EFF9FC;
@@ -113,10 +113,10 @@
 
 #games .game:hover {
   cursor: pointer;	
-  border: 1px solid #2691BE;
+  border: 1px solid #a1ddef;
 }
 
-#games .game h3 {
+.game h3 {
   margin: 15px 0 5px 0px;
   color: #D95600;	
   text-shadow: 0 1px 1px #fff;
@@ -131,6 +131,21 @@
   position: absolute;
   bottom: 15px;
   padding: 6px 30px 4px;
+}
+
+span.link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: block;	
+}
+
+.game:hover h3 {
+  color: #2691BE;
+  text-decoration: underline;	
 }
 </style>
 {% endblock %}
@@ -176,18 +191,13 @@
 <div id="games">
 	{% for g in featured_games %}
 	<div class="game">
+		<a href="{% url game g.slug %}"><span class="link"></span></a>
 		{% thumbnail g.image "250" crop="" as im %}
 			<img src="{{ im.url }}"/>
 		{% endthumbnail %}
 		<h3>{{ g.name }}</h3>
-		<div class="text">{{ g.short_description|safe }}
-		<p>
-		{% if g.direct_link %}
-			<a class="button" href="{{ g.direct_link }}">Play now!</a>
-		{% else %}
-			<a class="" href="{% url game g.slug %}"><strong>Find out more</strong></a>
-		{% endif %}	
-		</p>
+		<div class="text">
+			{{ g.short_description|safe }}
 		</div>
 	</div>
 	{% endfor %}
