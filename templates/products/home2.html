@@ -9,27 +9,28 @@
 #feature {
     border-radius: 10px 10px 10px 10px;
     height: auto;
-    margin: 0 0 40px 0;
+    margin: 0 0 20px 0;
     padding: 30px 30px 0;
     float: left;
     width: 900px;
-    text-align: right;
+    text-align: left;
 }
 
 #feature #image {
   float: left;
-  width: 550px;	
-  margin: 15px 0 0;
+  width: 900px;	
+  margin: 15px 0 10px;
 }
 
 #feature #text {
-  float: right;
-  width: 320px;	
+  float: left;
+  width: 600px;	
 }
 
 #feature h1 {
   float: left;	
   margin: 0;
+  width: 600px;
 }
 
 #feature p#desc {
@@ -38,7 +39,7 @@
 }
 
 #feature a.button {
-  margin: 0;
+  margin: 15px 0 0;
   float: right;
   font-size: 24px;
   padding: 16px 35px 14px;
@@ -167,8 +168,8 @@ span.link {
   </div>
   <div id="text">
 	{{ shopsettings.homepage_promo_text|safe }}
-	<a class="button" href="{% url games %}">Browse games &raquo;</a>
   </div>
+  <a class="button" href="{% url games %}">Browse games &raquo;</a>
 </div>
 
 <div id="promo">
