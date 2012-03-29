@@ -190,7 +190,7 @@ span.link {
 </div>
 
 <div id="games">
-	{% for g in featured_games %}
+	{% for g in shopsettings.homepage_featured_games.all %}
 	<div class="game">
 		<a href="{% url game g.slug %}"><span class="link"></span></a>
 		{% thumbnail g.image "250" crop="" as im %}
