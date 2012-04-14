@@ -57,9 +57,9 @@ a.button {
 	{% if game.direct_link %}
 		<div id="playnow">
 			{% if game.is_free_game %}
-			<a class="button" target="_blank" href="{{ game.direct_link }}">Play now &raquo;</a>
+			<a class="button grey" target="_blank" href="{{ game.direct_link }}">Play now &raquo;</a>
 			{% else %}
-			<a class="button grey" target="_blank" href="{{ game.direct_link }}">Get it now &raquo;</a>
+			<a class="button" target="_blank" href="{{ game.direct_link }}">Get it now &raquo;</a>
 			{% endif %}
 			
 			<p style="font-size: 12px; margin-top: 20px; color: #666;">

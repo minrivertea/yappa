@@ -154,7 +154,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', end
 
 #header #logo {
   float: left;
-  margin: 18px 0 0 30px;	
+  margin: 18px 0 0 0px;	
 }
 
 #header ul#nav {
