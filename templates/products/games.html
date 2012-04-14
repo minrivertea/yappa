@@ -37,23 +37,23 @@
   float: left;
   font-size: 38px;
   font-weight: bold;
-  width: 160px;
-  margin: 0 30px 0 0;
+  width: 140px;
+  margin: 0 20px 0 0;
   height: 100%;
-  padding: 0 30px 0 0;
+  padding: 0 20px 0 0;
   border-right: 1px solid #e1e1e1;	
   position: relative;
 }
 
 .cat .games {
   float: left;
-  width: 630px;	
+  width: 715px;	
 }
 
 .games .game {
   float: left;
-  width: 195px;	
-  height: 280px;
+  width: 345px;	
+  height: 180px;
   margin: 0 20px 20px 0;
   position: relative;
 }
@@ -67,11 +67,9 @@
 }
 
 .game .button {
-  float: left;
-  margin-top: 10px;	
-  position: absolute;
-  bottom: 0;
-  width: 140px;
+  float: left;	
+  width: 100px;
+  margin-top: 10px;
 }
 
 .game .more {
@@ -95,9 +93,19 @@ span.link:hover {
   cursor: pointer;	
 }
 
+.game .thumb {
+  float: left;
+  margin-right: 10px;	
+}
+
+.game .text {
+  float: left;
+  width: 210px;	
+}
+
 .game h4 {
   font-size: 22px;
-  margin: 15px 0 0;
+  margin: 0px;
   color: #D95600;	
 }
 
@@ -133,7 +141,7 @@ span.link:hover {
 		
 		<div class="image">
 			{% if c.image %}
-			{% thumbnail c.image "160" crop="" as im %}
+			{% thumbnail c.image "140" crop="" as im %}
 				<img src="{{ im.url }}"/>
 			{% endthumbnail %}	
 			{% else %}
@@ -143,14 +151,20 @@ span.link:hover {
 		</div>
 		<div class="games">
 			{% for g in c.get_games %}
-				<div class="game {% cycle 'last' '' '' %}">
+				<div class="game {% cycle '' 'last' %}">
 					<a href="{% url game g.slug %}"><span class="link"></span></a>
-					{% thumbnail g.image "170x170" crop="" as im %}
-						<img src="{{ im.url }}"/>
-					{% endthumbnail %}
-					<h4>{{ g.name }}</h4>
-					{{ g.short_description|safe }}<br/>
-					<a class="button" href="">Play Now!</a>
+					<div class="thumb">
+						{% thumbnail g.image "100x100" crop="" as im %}
+							<img src="{{ im.url }}"/>
+						{% endthumbnail %}
+					</div>
+					<div class="text">
+						<h4>{{ g.name }}</h4>
+						{{ g.short_description|safe }}
+						{% if g.is_free_game %}						
+						{% endif %}
+						<a class="button" href="">Play Now!</a>
+					</div>
 				</div>
 			{% endfor %}
 		</div>
