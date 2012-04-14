@@ -38,7 +38,7 @@ h1 {
 a.button {
   font-size: 30px;
   padding: 10px 35px;
-  margin: 10px 0 0 0;
+  margin: 10px 0 10px 0;
   float: left;	
 }
 </style>
@@ -53,11 +53,21 @@ a.button {
 
 
 {% block content %}
-					{% if game.direct_link %}
-					<div id="playnow">
-						<a class="button" target="_blank" href="{{ game.direct_link }}">Play now!</a>
-					</div>
-					{% endif %}
+					
+	{% if game.direct_link %}
+		<div id="playnow">
+			{% if game.is_free_game %}
+			<a class="button" target="_blank" href="{{ game.direct_link }}">Play now &raquo;</a>
+			{% else %}
+			<a class="button grey" target="_blank" href="{{ game.direct_link }}">Get it now &raquo;</a>
+			{% endif %}
+			
+			<p style="font-size: 12px; margin-top: 20px; color: #666;">
+				<strong>Price:</strong> {% if price %}{{ game.price }}{% else %}FREE{% endif %} <span style="color: #c1c1c1">&nbsp; | &nbsp;</span> 
+				{% if game.genre.all %}<strong>Genre:</strong> {% for genre in game.genre.all %}{{ genre }}{% if not forloop.last %} / {% endif %}{% endfor %}{% endif %}
+			</p>		
+		</div>
+	{% endif %}
 
 
 <h1>{{ game.name }}</h1>
