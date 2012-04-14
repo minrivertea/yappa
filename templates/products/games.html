@@ -77,16 +77,6 @@
     z-index: 30;
 }
 
-
-.game .more {
-  font-size: 12px;
-  position: relative;
-  top: 10px;
-  z-index:20;
-  width: 200px;
-  float: left;	
-}
-
 span.link {
   position: absolute;
   top: 0;
@@ -179,7 +169,6 @@ span.link:hover {
 						</p>
 						{% if g.is_free_game %}						
 							<a class="button" href="{{ g.direct_link }}">Play Now &raquo;</a>
-							<a class="more" href="{% url game g.slug %}">…or find out more &raquo;</a>
 						{% else %}
 							<a class="button grey" href="{{ g.direct_link }}">Get it now &raquo;</a>
 						{% endif %}
