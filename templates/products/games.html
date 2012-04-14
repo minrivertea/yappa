@@ -54,7 +54,7 @@
 .games .game {
   float: left;
   width: 345px;	
-  height: 180px;
+  height: 150px;
   margin: 0 20px 20px 0;
   position: relative;
 }
@@ -73,11 +73,10 @@
     margin-top: 10px;
     padding: 8px 5px 6px;
     width: 100px;
+    position: relative;
+    z-index: 30;
 }
 
-.game .button.grey {
-  width: 80px;	
-}
 
 .game .more {
   font-size: 12px;
@@ -123,9 +122,8 @@ span.link:hover {
   color: #D95600;	
 }
 
-.game:hover h4, .game:hover .button.grey {
-  color: #333;
-  text-shadow: 0 1px 1px #fff;	
+.game:hover h4 {
+  text-decoration: underline;	
 }
 
 .game:hover img {
@@ -183,7 +181,7 @@ span.link:hover {
 							<a class="button" href="{{ g.direct_link }}">Play Now &raquo;</a>
 							<a class="more" href="{% url game g.slug %}">…or find out more &raquo;</a>
 						{% else %}
-							<a class="button grey" href="">Get it &raquo;</a>
+							<a class="button grey" href="{{ g.direct_link }}">Get it now &raquo;</a>
 						{% endif %}
 					</div>
 				</div>
