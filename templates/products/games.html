@@ -68,9 +68,15 @@
 }
 
 .game .button {
-  float: left;	
-  width: 100px;
-  margin-top: 10px;
+    float: left;
+    font-size: 17px;
+    margin-top: 10px;
+    padding: 8px 5px 6px;
+    width: 110px;
+}
+
+.game .button.grey {
+  width: 90px;	
 }
 
 .game .more {
@@ -110,9 +116,9 @@ span.link:hover {
   color: #D95600;	
 }
 
-.game:hover h4, .game:hover .more  {
-    color: #2691BE;
-    text-decoration: underline;
+.game:hover h4, .game:hover .button.grey {
+  color: #333;
+  text-shadow: 0 1px 1px #fff;	
 }
 
 .game:hover img {
@@ -162,9 +168,15 @@ span.link:hover {
 					<div class="text">
 						<h4>{{ g.name }}</h4>
 						{{ g.short_description|safe }}
+						<p style="font-size: 12px;">
+							<strong>Price:</strong> {% if price %}{{ g.price }}{% else %}FREE{% endif %}<br/>
+							{% if g.genre.all %}<strong>Genre</strong> {% for genre in g.genre.all %}{{ genre }}{% if not forloop.last %} / {% endif %}{% endfor %}{% endif %}
+						</p>
 						{% if g.is_free_game %}						
+							<a class="button" href="">Play Now &raquo;</a>
+						{% else %}
+							<a class="button grey" href="">Get it &raquo;</a>
 						{% endif %}
-						<a class="button" href="">Play Now!</a>
 					</div>
 				</div>
 			{% endfor %}
