@@ -47,18 +47,30 @@ class Category(models.Model):
 
         return games
 
+class Genre(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200)
+    
+    def __unicode__(self):
+        return self.name
+
 class Product(models.Model):
     name = models.CharField(max_length=200, 
         help_text="The full name of this game")
     slug = models.SlugField(max_length=80, 
         help_text="No special characters, spaces etc. only letters, numbers and '-' dashes")
-    categories = models.ManyToManyField(Category, 
+    categories = models.ManyToManyField(Category,
         help_text="Which categories does this game belong to?")
     direct_link = models.URLField(blank=True, null=True, 
         help_text="A URL link to the external game website. Optional, and remember the http:// at the beginning.")
+    is_free_game = models.BooleanField(default=True, 
+        help_text="Tick this box if the game is free. Leave unchecked if the game is paid-for.")
+    price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True, 
+        help_text="Optional field - enter a price if the game has a price, leave blank if it's free. eg. 0.99 is OK, enter 23 and it means 23.00.")
     short_description = tinymce_models.HTMLField(help_text="Very short description, only 70 characters.")
     description = tinymce_models.HTMLField(help_text="Slightly longer description, maybe 200 characters.")
     body = tinymce_models.HTMLField(help_text="Full description, unlimited.")
+    genre = models.ManyToManyField(Genre, blank=True, null=True)
     image = models.ImageField(upload_to='images/products', 
         help_text="The small 'thumbnail' image for the game. ")
     big_promo_image = models.ImageField(upload_to="images/products", blank=True, null=True,

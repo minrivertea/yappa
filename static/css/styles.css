@@ -119,7 +119,7 @@ a.button {
 
 #header {
   width: 100%;
-  height: 150px;
+  height: 125px;
   margin: 0;
   padding: 30px 0 0px;
   background: rgb(5,171,224); /* Old browsers */
@@ -134,11 +134,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', end
 
 #header #logo {
   float: left;
-  margin: 48px 0 0 30px;	
+  margin: 18px 0 0 30px;	
 }
 
 #header ul#nav {
-  margin: 80px 30px 0 0;
+  margin: 50px 30px 0 0;
   padding: 0;
   list-style-type: none;
   float: right;	
