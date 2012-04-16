@@ -90,9 +90,9 @@
 }
 
 #games {
-  padding: 10px 20px;
+  padding: 10px 0px;
   float: left;
-  width: 900px;
+  width: 960px;
   margin: 30px 0 0 0;	
 }
 
@@ -100,7 +100,7 @@
   padding: 15px;
   float: left;
   margin: 0 20px 3px 0;	
-  width: 175px;
+  width: 185px;
   height: 235px;
   border: 1px solid #fff;
   box-shadow: 0 1px 3px #999;
@@ -193,7 +193,7 @@ span.link {
 	{% for g in shopsettings.homepage_featured_games.all %}
 	<div class="game">
 		<a href="{% url game g.slug %}"><span class="link"></span></a>
-		{% thumbnail g.image "175" crop="" as im %}
+		{% thumbnail g.image "185" crop="" as im %}
 			<img src="{{ im.url }}"/>
 		{% endthumbnail %}
 		<h3>{{ g.name }}</h3>
