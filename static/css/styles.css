@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
-  background: #05abe0;
+  background: #EFF9FC;
   min-height: 1000px;
 }
 
@@ -105,7 +105,7 @@ a.button {
   width: 100%;
   height: auto;
   display: block;
-  padding: 20px 0 50px 0;	
+  padding: 20px 0 50px 0;
 }
 
 #footer ul {
@@ -113,17 +113,18 @@ a.button {
   font-size: 13px;
   font-weight: bold;
   margin: 0;	
+  padding: 0;
 }
 
 #footer ul li {
   display: inline;	
   margin: 0 20px 0 0;
   padding: 0 20px 0 0;
-  border-right: 1px solid #fff;
+  border-right: 1px solid #e1e1e1;
 }
 
 #footer ul li a {
-  color: #fff;	
+  color: #05abe0;	
 }
 
 #center {
