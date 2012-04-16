@@ -56,7 +56,9 @@
    <div class="super">
 	   	<div id="logo">
 	   		<a href="/">
-	   		  <img src="{% staticfile '/images/yappag.png' %}"/>	
+	   			{% thumbnail shopsettings.logo "430x100" crop="" as im %}
+	   		  <img src="{{ im.url }}"/>
+	   		    {% endthumbnail %}	
 	   		</a>
 	   	</div>
 	   	
