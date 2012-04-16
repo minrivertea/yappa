@@ -10,14 +10,7 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
-background: rgb(5,171,224); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(5,171,224,1) 0%, rgba(83,203,241,1) 60%, rgba(135,224,253,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(5,171,224,1)), color-stop(60%,rgba(83,203,241,1)), color-stop(100%,rgba(135,224,253,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); /* IE10+ */
-background: linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='#87e0fd',GradientType=0 ); /* IE6-9 */
+  background: #05abe0;
   min-height: 1000px;
 }
 
@@ -142,14 +135,19 @@ a.button {
   height: 125px;
   margin: 0;
   padding: 30px 0 0px;
-  background: rgb(5,171,224); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(5,171,224,1) 0%, rgba(83,203,241,1) 60%, rgba(135,224,253,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(5,171,224,1)), color-stop(60%,rgba(83,203,241,1)), color-stop(100%,rgba(135,224,253,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); /* IE10+ */
-background: linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='#87e0fd',GradientType=0 ); /* IE6-9 */
+  
+  
+  /*
+  background: rgb(5,171,224); 
+background: -moz-linear-gradient(top,  rgba(5,171,224,1) 0%, rgba(83,203,241,1) 60%, rgba(135,224,253,1) 100%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(5,171,224,1)), color-stop(60%,rgba(83,203,241,1)), color-stop(100%,rgba(135,224,253,1))); 
+background: -webkit-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%);
+background: -o-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); 
+background: -ms-linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); 
+background: linear-gradient(top,  rgba(5,171,224,1) 0%,rgba(83,203,241,1) 60%,rgba(135,224,253,1) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='#87e0fd',GradientType=0 );
+  */
+  background: #05abe0;
 }
 
 #header #logo {
