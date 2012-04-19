@@ -147,7 +147,7 @@ span.link:hover {
 				<img src="{{ im.url }}"/>
 			{% endthumbnail %}	
 			{% else %}
-				{{ c.name }}
+				{{ c.name|safe }}
 			{% endif %}
 			
 		</div>
